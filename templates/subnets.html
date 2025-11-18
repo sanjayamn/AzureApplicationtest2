@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Subnets</h2>
+
+<a href="/subnets/download" class="btn btn-success mb-3">Download CSV</a>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Virtual Network</th>
+      <th>Subnet Name</th>
+      <th>Address Prefix</th>
+      <th>Resource Group</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for s in subnets %}
+  <tr>
+    <td>{{ s.vnet }}</td>
+    <td>{{ s.subnet }}</td>
+    <td>{{ s.address_prefix }}</td>
+    <td>{{ s.resource_group }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

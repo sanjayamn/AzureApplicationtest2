@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Dashboard Overview</h2>
+
+<div class="row">
+
+  <div class="col-md-3">
+    <div class="card text-white bg-primary mb-3 shadow">
+      <div class="card-body">
+        <h5 class="card-title">Virtual Machines</h5>
+        <h3>{{ total_vms }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-white bg-success mb-3 shadow">
+      <div class="card-body">
+        <h5 class="card-title">Virtual Networks</h5>
+        <h3>{{ total_vnets }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-white bg-warning mb-3 shadow">
+      <div class="card-body">
+        <h5 class="card-title">Subnets</h5>
+        <h3>{{ total_subnets }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-white bg-info mb-3 shadow">
+      <div class="card-body">
+        <h5 class="card-title">Storage Accounts</h5>
+        <h3>{{ total_storage }}</h3>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

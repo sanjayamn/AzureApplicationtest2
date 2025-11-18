@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Virtual Machines</h2>
+
+<a href="/vms/download" class="btn btn-success mb-3">Download CSV</a>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Size</th>
+      <th>Operating System</th>
+      <th>Plan</th>
+      <th>Virtual Network</th>
+      <th>Subnet</th>
+      <th>IP Address</th>
+      <th>Resource Group</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for vm in vms %}
+  <tr>
+    <td>{{ vm.name }}</td>
+    <td>{{ vm.location }}</td>
+    <td>{{ vm.size }}</td>
+    <td>{{ vm.os_type or 'N/A' }}</td>
+    <td>{{ vm.plan or 'N/A' }}</td>
+    <td>{{ vm.vnet }}</td>
+    <td>{{ vm.subnet }}</td>
+    <td>{{ vm.ip_address }}</td>
+    <td>{{ vm.resource_group }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock %}
