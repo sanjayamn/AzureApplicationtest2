@@ -6,14 +6,30 @@ from azure.mgmt.network import NetworkManagementClient
 from azure.mgmt.storage import StorageManagementClient
 import csv
 import io
+import os
+import json
 
 app = Flask(__name__)
 
 # Azure Credentials
-TENANT_ID = "aefa267e-2783-4254-8760-523bc200d286"
-CLIENT_ID = "0ae8647e-1988-4b1b-bd4e-494f4d2f2f8c"
-CLIENT_SECRET = "PlH8Q~6I5gJylvUe8pP5Xj96gM8BrUABILx_Ua.9"
-SUBSCRIPTION_ID = "a6cbacda-278f-4a18-bf27-b46cd749d2ac"
+CONFIG_PATH = "config/config.json"
+
+config = {}
+if os.path.exists(CONFIG_PATH):
+    with open(CONFIG_PATH, "r") as f:
+        config = json.load(f)
+
+# -------------------------------------------
+# Retrieve credentials (local OR environment)
+# -------------------------------------------
+TENANT_ID = os.environ.get("AZURE_TENANT_ID", config.get("TENANT_ID"))
+CLIENT_ID = os.environ.get("AZURE_CLIENT_ID", config.get("CLIENT_ID"))
+CLIENT_SECRET = os.environ.get("AZURE_CLIENT_SECRET", config.get("CLIENT_SECRET"))
+SUBSCRIPTION_ID = os.environ.get("AZURE_SUBSCRIPTION_ID", config.get("SUBSCRIPTION_ID"))
+
+
+
+
 
 credential = ClientSecretCredential(
     tenant_id=TENANT_ID,
