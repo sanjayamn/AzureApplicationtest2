@@ -8,7 +8,10 @@ import csv
 import io
 import os
 import json
+from dotenv import load_dotenv
 
+
+load_dotenv()
 app = Flask(__name__)
 
 # Azure Credentials
@@ -22,10 +25,10 @@ if os.path.exists(CONFIG_PATH):
 # -------------------------------------------
 # Retrieve credentials (local OR environment)
 # -------------------------------------------
-TENANT_ID = os.environ.get("AZURE_TENANT_ID", config.get("TENANT_ID"))
-CLIENT_ID = os.environ.get("AZURE_CLIENT_ID", config.get("CLIENT_ID"))
-CLIENT_SECRET = os.environ.get("AZURE_CLIENT_SECRET", config.get("CLIENT_SECRET"))
-SUBSCRIPTION_ID = os.environ.get("AZURE_SUBSCRIPTION_ID", config.get("SUBSCRIPTION_ID"))
+TENANT_ID = os.getenv("AZURE_TENANT_ID")
+CLIENT_ID = os.getenv("AZURE_CLIENT_ID")
+CLIENT_SECRET = os.getenv("AZURE_CLIENT_SECRET")
+SUBSCRIPTION_ID = os.getenv("AZURE_SUBSCRIPTION_ID")
 
 
 
